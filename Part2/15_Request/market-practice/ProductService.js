@@ -6,8 +6,8 @@ async function request(url, options = {}) {
     const res = await fetch(url, options);  // fetch(url, {}): GET
 
     if (!res.ok) {
-      const errorBody = await res.json().catch(() => ({}));
-      const err = new Error(errorBody.message || `API Error: ${res.status} ${res.statusText}`);
+      const errorBody = await res.json().catch(() => ({}));  // 수정 필요
+      const err = new Error(errorBody.message || `Product API Error: ${res.status} ${res.statusText}`);
       err.status = res.status;
       err.info = errorBody;
       throw err;
@@ -19,7 +19,7 @@ async function request(url, options = {}) {
     return await res.json();
 
   } catch (err) {
-    console.error(`[API Error] ${options.method || 'GET'} ${url}:`, err);
+    console.error(`[Product API Error] ${options.method || 'GET'} ${url}:`, err);  // 에러 메시지 적절한지 확인
     throw err;
   }
 }
