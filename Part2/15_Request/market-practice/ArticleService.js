@@ -42,20 +42,19 @@ export function getArticle(articleId) {
   return request(`${BASE_URL}/articles/${articleId}`);
 }
 
-// 게시글 생성
 export function createArticle({ title, content, image }) {
   return request(`${BASE_URL}/articles`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({ title, content, image }),
   });
+}
     // .then(handleResponse)
     // .then(res => res.json())
     // .catch(err => {
     //   console.error('createArticle Error:', err);
     //   throw err;
     // });
-}
 
 // 게시글 수정
 export function patchArticle(articleId, payload) {

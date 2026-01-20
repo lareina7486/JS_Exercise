@@ -42,7 +42,7 @@ https://panda-market-api-crud.vercel.app/docs/
 [ ] deleteProduct() : DELETE 메서드를 사용해 주세요.
 
 [ ] async/await 을 이용하여 비동기 처리를 해주세요.
-[ ]  try/catch 를 이용하여 오류 처리를 해주세요.
+[ ] try/catch 를 이용하여 오류 처리를 해주세요.
 
 [√]  구현한 함수들을 아래와 같이 파일을 분리해 주세요.
 [√] export를 활용해 주세요.

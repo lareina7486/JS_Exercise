@@ -6,7 +6,8 @@ async function request(url, options = {}) {
     const res = await fetch(url, options);  // fetch(url, {}): GET
 
     if (!res.ok) {
-      const errorBody = await res.json().catch(() => ({}));  // 수정 필요
+      // 에러 응답에 body가 없거나(DELETE, 500번대 에러) JSON이 아닌 경우 처리
+      const errorBody = await res.json().catch(() => ({}));
       const err = new Error(errorBody.message || `Product API Error: ${res.status} ${res.statusText}`);
       err.status = res.status;
       err.info = errorBody;
@@ -69,8 +70,9 @@ export async function createProduct({ name, description, price, tags, images }) 
   return request(`${BASE_URL}/products`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({ name, description, price, tags, images }),
   });
+}
 
   // try {
   //   const res = await fetch(`${BASE_URL}/products`, {
@@ -88,7 +90,6 @@ export async function createProduct({ name, description, price, tags, images }) 
   //   console.error('createProduct Error:', err);
   //   throw err;
   // }
-}
 
 // 상품 수정
 export async function patchProduct(productId, payload) {
