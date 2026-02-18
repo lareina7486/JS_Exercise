@@ -1,0 +1,17 @@
+// 참이나 거짓을 의미하지 않는 값도, 조건문 내에서 참이나 거짓으로 평가하는 특징
+// 모든 값은 TRUTHY or FALSY
+// 참 같은 값 - TRUTHY: 7가지 FALSY 값을 제외한 모든 것 ([], {}, 화살표 함수 등)
+// 거짓 같은 값 - FALSY: undefined, null, 0, -0, NaN, "", 0n(BIG INT)
+
+function printName(person) {
+  if (!person) {
+    // person === undefined || person === null
+    console.log('person의 값이 없음');
+    return;
+  }
+
+  console.log(person.name);
+}
+
+let person = { name: '강에스더' };
+printName(person);
